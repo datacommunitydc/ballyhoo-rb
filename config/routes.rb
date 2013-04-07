@@ -1,4 +1,4 @@
-MeetupAnnouncements::Application.routes.draw do
+Ballyhoo::Application.routes.draw do
   root to: 'sessions#index'
 
   get '/auth/:provider/callback', to: 'sessions#create'

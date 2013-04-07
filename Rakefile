@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-MeetupAnnouncements::Application.load_tasks
+Ballyhoo::Application.load_tasks

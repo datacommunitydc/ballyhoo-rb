@@ -17,7 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: meetup_announcements_development
+  database: ballyhoo_development
   pool: 5
   username: meetup
   password: meetup
@@ -46,7 +46,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: meetup_announcements_test
+  database: ballyhoo_test
   pool: 5
   username: meetup
   password: meetup
@@ -54,7 +54,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: meetup_announcements_production
+  database: ballyhoo_production
   pool: 5
-  username: meetup_announcements
+  username: ballyhoo
   password:
