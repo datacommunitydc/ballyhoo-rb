@@ -1,7 +1,10 @@
 MeetupAnnouncements::Application.routes.draw do
   root to: 'sessions#index'
 
-  post '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/welcome', to: 'home#index', as: :welcome
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

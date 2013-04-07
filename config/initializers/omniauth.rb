@@ -15,6 +15,7 @@ class MeetupCredentials
     end
   end
 end
+
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :developer unless Rails.env.production?
   provider :meetup, MeetupCredentials.key, MeetupCredentials.secret

@@ -38,12 +38,17 @@ gem 'jbuilder', '~> 1.0.1'
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Deploy with Capistrano
-gem 'capistrano', group: :development
+group :development do
+  gem 'capistrano'
+  gem 'annotate'
+  gem 'simplecov'
+end
 
 # To use debugger
 gem 'debugger'
 
 group :test do
   gem 'rspec-rails'
+  gem 'guard'
+  gem 'guard-rspec'
 end
