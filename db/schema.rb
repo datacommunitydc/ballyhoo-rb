@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20130407154454) do
     t.integer  "user_id"
     t.string   "provider"
     t.string   "remote_uid"
-    t.boolean  "valid"
+    t.boolean  "current"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

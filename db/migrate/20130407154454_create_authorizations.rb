@@ -4,7 +4,7 @@ class CreateAuthorizations < ActiveRecord::Migration
       t.integer :user_id
       t.string :provider
       t.string :remote_uid
-      t.boolean :valid
+      t.boolean :current
 
       t.timestamps
     end
