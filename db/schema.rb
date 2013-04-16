@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130407154454) do
+ActiveRecord::Schema.define(version: 20130415025142) do
 
   create_table "authorizations", force: true do |t|
     t.integer  "user_id"
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 20130407154454) do
     t.string   "kind"
     t.string   "value"
     t.datetime "expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
