@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
   attr_accessor :password_confirmation
   has_secure_password validations: false
 
-  has_many :memberships, class_name:"UserMeetup", dependent:true
-  has_many :meetups, through: :memberships
+  has_many :user_meetups, dependent: :destroy
+  has_many :meetups, through: :user_meetups
 
   validates_uniqueness_of :email
   validates_confirmation_of :password

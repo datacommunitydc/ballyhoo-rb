@@ -1,9 +1,20 @@
+# == Schema Information
+# Schema version: 20130421120500
+#
+# Table name: user_meetups
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  meetup_id  :integer
+#  admin      :boolean
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class UserMeetup < ActiveRecord::Base
-    attr_accessor :user_id, :meetup_id, :admin
+  belongs_to :user
+  belongs_to :meetup
 
-    belongs_to :user, class_name:"User"
-    belongs_to :meetup, class_name:"Meetup"
-
-    validates :user_id, presence:true
-    validates :meetup_id, presence:true
+  validates :user_id,   presence: true
+  validates :meetup_id, presence: true
 end
