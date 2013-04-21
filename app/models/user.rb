@@ -35,5 +35,6 @@ class User < ActiveRecord::Base
     if list.try(:any?)
       self.user_meetups = list
     end
+    save
   end
 end

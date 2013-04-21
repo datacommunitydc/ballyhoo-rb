@@ -5,8 +5,17 @@ module UserInteractor
     end
 
     def find_or_create_user
-      nil
+      if u = User.find_by_email(email)
+        u
+      else
+        User.create(email: email)
+      end
     end
+
+    private
+      def email
+        @auth_hash[:uid]
+      end
   end
 end
 
