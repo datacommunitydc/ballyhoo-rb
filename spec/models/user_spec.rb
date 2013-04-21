@@ -59,4 +59,65 @@ describe User do
     end
   end
 
+  describe "#refresh_meetups!" do
+    before :all do
+      @user = FactoryGirl.create(:user)
+    end
+    it "refreshes the latest meetups from the MeetupFinder" do
+      MeetupFinder.should_receive(:meetups_for).with(@user)
+      @user.refresh_meetups!
+    end
+
+    context "no meetups to start" do
+      before :each do
+        @user.user_meetups.destroy
+      end
+
+      context "no meetups found" do
+        before do
+          MeetupFinder.should_receive(:meetups_for).and_return([])
+        end
+        it "should not have meetups" do
+          @user.refresh_meetups!
+          @user.user_meetups.should be_empty
+        end
+      end
+
+      context "some meetups" do
+        before do
+          user_meetups = FactoryGirl.create_list(:user_meetup, 4, user: @user)
+          @meetups = user_meetups.map(&:meetup)
+          MeetupFinder.should_receive(:meetups_for).and_return(user_meetups)
+        end
+
+        it "should have the meetups" do
+          @user.refresh_meetups!
+          @meetups.each {|m| @user.meetups.should include(m) }
+        end
+      end
+    end
+
+    context "some meetups already" do
+      # not sure these tests are 100% of what's needed, but whatever
+
+      before :all do
+        @user = FactoryGirl.create(:user, :with_meetups)
+      end
+
+      it "should replace the list with a new one" do
+        serials = @user.user_meetups.map(&:id)
+
+        user_meetups = FactoryGirl.create_list(:user_meetup, 4, user: @user)
+        MeetupFinder.should_receive(:meetups_for).and_return(user_meetups)
+
+        @user.refresh_meetups!
+
+        new_serials = @user.user_meetups.map(&:id)
+
+        # no overlap (all new serials)
+        (serials & new_serials).should == []
+      end
+    end
+  end
+
 end

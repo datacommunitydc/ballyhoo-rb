@@ -9,7 +9,18 @@ describe UserInteractor::UserAuthConsumer do
     consumer = UserInteractor::UserAuthConsumer.new(unsupported_auth)
     expect {
       consumer.find_or_create_user
-    }.to raise_error(UserInteractor::UserAuthConsumer::AuthException)
+    }.to raise_error(UserInteractor::UserAuthConsumer::AuthError)
+  end
+
+  describe "developer auth" do
+    let(:developer_auth) { }
+    #Hackity hack!
+    before :all do
+      @josh = FactoryGirl.create(:josh)
+      @harlan = FactoryGirl.create(:harlan)
+    end
+
+
   end
 
   describe "meetup auth" do
@@ -66,7 +77,9 @@ describe UserInteractor::UserAuthConsumer do
 
     it "uses the correct provider for a meetup auth hash" do
       consumer = UserInteractor::UserAuthConsumer.new(meetup_auth)
-      consumer.should_receive(:find_or_create_meetup_user).once
+      ob = double("UserInteractor::MeetupUserFactory")
+      ob.should_receive(:find_or_create_user).once
+      UserInteractor::MeetupUserFactory.should_receive(:new).once.and_return(ob)
       consumer.find_or_create_user
     end
 

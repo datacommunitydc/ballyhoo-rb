@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   attr_accessor :password_confirmation
   has_secure_password validations: false
 
+  has_many :user_meetups, dependent: :destroy
+  has_many :meetups, through: :user_meetups
+
   validates_uniqueness_of :email
   validates_confirmation_of :password
 
@@ -24,5 +27,14 @@ class User < ActiveRecord::Base
     else
       nil
     end
+  end
+
+  def refresh_meetups!
+    self.user_meetups.delete_all
+    list = MeetupFinder.meetups_for(self)
+    if list.try(:any?)
+      self.user_meetups = list
+    end
+    save
   end
 end

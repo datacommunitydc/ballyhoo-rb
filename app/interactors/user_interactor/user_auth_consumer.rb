@@ -7,24 +7,25 @@ module UserInteractor
     end
 
     def find_or_create_user
-      case auth_provider
-      when 'meetup'
-        find_or_create_meetup_user
+      if auth_hash && auth_provider
+        begin
+          klass = "UserInteractor::#{auth_provider.to_s.classify}UserFactory".constantize
+          klass.new(auth_hash).find_or_create_user
+        rescue NameError
+          raise NoAuthProviderError.new("Unsupported Auth Provider")
+        end
       else
-        raise AuthException.new("unsupported auth provider")
+        nil
       end
     end
 
     private
 
-    def find_or_create_meetup_user
-      Credential.for_provider(:meetup).with_
-    end
-
     def auth_provider
       auth_hash['provider']
     end
 
-    class AuthException < StandardError; end
+    class AuthError < StandardError; end
+    class NoAuthProviderError < AuthError; end
   end
 end
