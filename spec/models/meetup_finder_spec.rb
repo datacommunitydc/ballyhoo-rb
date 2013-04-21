@@ -1,20 +1,31 @@
 require 'spec_helper'
 
 describe MeetupFinder do
-  #Intended API:
-  #  all_metups = MeetupFinder.meetups_for(user)
-  #  organizing = MeetupFinder.meetups_for(user, organizing: true)
-  #  all_metups = MeetupFinder.meetups_for(user, strategy: :development)
-  #  all_metups = MeetupFinder.meetups_for(user, strategy: :meetup)
-
   before :all do
     @user_with_no_meetups = FactoryGirl.create(:user)
   end
 
+  describe "#default_strategy" do
+    it "has a default strategy that defaults to :meetup" do
+      MeetupFinder.default_strategy.should == :meetup
+    end
+
+    context "changing it" do
+      it "can be changed" do
+        MeetupFinder.default_strategy = :foo
+        MeetupFinder.default_strategy.should == :foo
+      end
+
+      after :all do
+        MeetupFinder.instance_variable_set('@default_strategy', nil)
+      end
+    end
+  end
+
   describe "lookup strategies" do
     context ":development strategy" do
-      before :each do
-        MeetupFinder.stub(:default_strategy).and_return(:development)
+      before :all do
+        MeetupFinder.default_strategy = :development
       end
 
       it "uses the development strategy" do
@@ -29,7 +40,9 @@ describe MeetupFinder do
     end
 
     context ":meetup strategy" do
-      # no setup because meetup is default
+      before :all do
+        MeetupFinder.default_strategy = :meetup
+      end
 
       it "uses the meetup strategy" do
         strategy = double("MeetupFinder::Metup")
@@ -63,9 +76,6 @@ describe MeetupFinder do
   end
   it "looks up the meetups where the user is an organizer"
 
-  it "has a default strategy that defaults to :meetup" do
-    MeetupFinder.default_strategy.should == :meetup
-  end
 
 
 end
