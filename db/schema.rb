@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130415025142) do
+ActiveRecord::Schema.define(version: 20130419171213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,24 @@ ActiveRecord::Schema.define(version: 20130415025142) do
     t.string   "kind"
     t.string   "value"
     t.datetime "expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "meetups", force: true do |t|
+    t.string   "name"
+    t.string   "url_name"
+    t.boolean  "announcements_enabled"
+    t.boolean  "anon_view_enabled"
+    t.string   "logo_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_meetups", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "meetup_id"
+    t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
