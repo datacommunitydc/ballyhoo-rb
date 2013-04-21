@@ -7,5 +7,11 @@ FactoryGirl.define do
     factory :josh do
       email "josh@example.com"
     end
+
+    factory :user_with_meetups do
+      after(:create) do |user, evaluator|
+        FactoryGirl.create_list(:user_meetup, 3, user: user)
+      end
+    end
   end
 end

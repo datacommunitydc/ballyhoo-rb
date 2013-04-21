@@ -36,7 +36,8 @@ module MeetupFinder
       end
 
       def find_or_fake_meetup(options)
-        if m = Meetup.find_by_meetup_ident(options[:meetup_ident])
+        # reference root namespace in case the class wasn't previously loaded.. weird rails 4ism I think?
+        if m = ::Meetup.find_by_meetup_ident(options[:meetup_ident])
           m
         else
           Meetup.create(options)

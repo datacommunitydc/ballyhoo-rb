@@ -28,4 +28,12 @@ class User < ActiveRecord::Base
       nil
     end
   end
+
+  def refresh_meetups!
+    self.user_meetups.delete_all
+    list = MeetupFinder.meetups_for(self)
+    if list.try(:any?)
+      self.user_meetups = list
+    end
+  end
 end
