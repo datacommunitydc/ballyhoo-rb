@@ -5,7 +5,7 @@ module MeetupFinder
       @options = options
     end
 
-    def meetups
+    def user_meetups
       # TODO
     end
   end

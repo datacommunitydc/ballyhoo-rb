@@ -30,7 +30,7 @@ describe MeetupFinder do
 
       it "uses the development strategy" do
         strategy = double("MeetupFinder::Development")
-        strategy.should_receive(:meetups)
+        strategy.should_receive(:user_meetups)
         MeetupFinder::Development.
           should_receive(:new).
           once.
@@ -46,7 +46,7 @@ describe MeetupFinder do
 
       it "uses the meetup strategy" do
         strategy = double("MeetupFinder::Metup")
-        strategy.should_receive(:meetups)
+        strategy.should_receive(:user_meetups)
         MeetupFinder::Meetup.
           should_receive(:new).
           once.
@@ -57,7 +57,7 @@ describe MeetupFinder do
 
     it "passes on options to the lookup strategy" do
       strategy = double("MeetupFinder::Metup")
-      strategy.should_receive(:meetups)
+      strategy.should_receive(:user_meetups)
       MeetupFinder::Meetup.
         should_receive(:new).
         with(@user_with_no_meetups, foo: :bar).
