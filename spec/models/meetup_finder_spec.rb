@@ -23,15 +23,15 @@ describe MeetupFinder do
   end
 
   describe "lookup strategies" do
-    context ":development strategy" do
+    context ":developer strategy" do
       before :all do
-        MeetupFinder.default_strategy = :development
+        MeetupFinder.default_strategy = :developer
       end
 
-      it "uses the development strategy" do
-        strategy = double("MeetupFinder::Development")
+      it "uses the developer strategy" do
+        strategy = double("MeetupFinder::Developer")
         strategy.should_receive(:user_meetups)
-        MeetupFinder::Development.
+        MeetupFinder::Developer.
           should_receive(:new).
           once.
           and_return(strategy)

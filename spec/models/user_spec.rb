@@ -101,7 +101,7 @@ describe User do
       # not sure these tests are 100% of what's needed, but whatever
 
       before :all do
-        @user = FactoryGirl.create(:user_with_meetups)
+        @user = FactoryGirl.create(:user, :with_meetups)
       end
 
       it "should replace the list with a new one" do

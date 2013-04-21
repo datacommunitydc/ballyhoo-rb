@@ -1,5 +1,5 @@
 module MeetupFinder
-  class Development
+  class Developer
     JOSH = "josh@example.com"
 
     attr_accessor :user, :options
@@ -40,7 +40,7 @@ module MeetupFinder
         if m = ::Meetup.find_by_meetup_ident(options[:meetup_ident])
           m
         else
-          Meetup.create(options)
+          ::Meetup.create(options)
         end
       end
   end

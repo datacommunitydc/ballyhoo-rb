@@ -37,6 +37,10 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  config.before(:all) do
+    OmniAuth.config.test_mode = true
+  end
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean_with(:truncation)
@@ -48,7 +52,6 @@ RSpec.configure do |config|
 end
 
 # TODO
-#OmniAuth.config.test_mode = true
 #OmniAuth.config.add_mock(:meetup, {
 #  :uid => '12345',
 #  :info => {

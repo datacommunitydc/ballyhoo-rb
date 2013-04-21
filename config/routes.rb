@@ -2,6 +2,8 @@ Ballyhoo::Application.routes.draw do
   root to: 'sessions#index'
 
   get '/auth/:provider/callback', to: 'sessions#create'
+  post '/auth/:provider/callback', to: 'sessions#create'
+
   get '/welcome', to: 'home#index', as: :welcome
 
 
