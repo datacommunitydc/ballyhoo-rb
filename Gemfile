@@ -10,6 +10,9 @@ gem 'omniauth-meetup'
 
 gem 'slim-rails'
 
+gem 'httparty'
+
+gem 'virtus'
 
 # Gems used only for assets and not required
 # in production environments by default.

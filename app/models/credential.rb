@@ -20,4 +20,8 @@
 class Credential < ActiveRecord::Base
 
   belongs_to :user
+
+  def expired?
+    expires_at < Time.now
+  end
 end
