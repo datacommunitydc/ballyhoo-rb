@@ -22,7 +22,10 @@ module UserInteractor
 
       def locate_user(auth)
         @user = if auth
-          auth.update_attributes(current: true)
+          auth.update_attributes(
+            current: true,
+            extra_data: auth_hash
+          )
           auth.user
         else
           create_user!
@@ -37,7 +40,8 @@ module UserInteractor
         user = User.new
         user.authorizations.build(
           provider: 'meetup',
-          remote_uid: meetup_uid
+          remote_uid: meetup_uid,
+          extra_data: auth_hash
         )
         user.save
         user

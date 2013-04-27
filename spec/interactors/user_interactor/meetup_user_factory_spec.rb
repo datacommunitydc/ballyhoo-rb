@@ -75,6 +75,13 @@ describe UserInteractor::MeetupUserFactory do
         u = i.find_or_create_user
         u.should == @user
       end
+
+      it "stores the auth hash as extra_data" do
+        i = UserInteractor::MeetupUserFactory.new(@meetup_auth)
+        u = i.find_or_create_user
+        auth = u.authorizations.for_provider('meetup').first
+        auth.extra_data.should == @meetup_auth
+      end
     end
 
     context "with lapsed auth" do
