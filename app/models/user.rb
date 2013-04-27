@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   has_many :user_meetups, dependent: :destroy
   has_many :meetups, through: :user_meetups
 
+  has_many :authorizations, dependent: :destroy
+  has_many :credentials, dependent: :destroy
+
   validates_uniqueness_of :email
   validates_confirmation_of :password
 

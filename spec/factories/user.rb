@@ -11,6 +11,16 @@ FactoryGirl.define do
       email "harlan@example.com"
     end
 
+    trait :with_meetup_auth do
+      ignore do
+        remote_uid 123
+      end
+
+      after(:create) do |user, evaluator|
+        FactoryGirl.create(:meetup_authorization, user: user, remote_uid: evaluator.remote_uid)
+      end
+    end
+
     trait :with_meetups do
       after(:create) do |user, evaluator|
         FactoryGirl.create_list(:user_meetup, 3, user: user)

@@ -19,6 +19,8 @@ class Authorization < ActiveRecord::Base
   scope :for_provider, ->(p) { where(provider: p) }
   scope :with_remote_uid, ->(uid) { where(remote_uid: uid) }
 
+  belongs_to :user
+
   def self.find_or_build(provider, remote_uid)
     if existing = Authorization.for_provider(provider).with_remote_uid(remote_uid).last
       existing.touch
