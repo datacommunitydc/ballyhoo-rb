@@ -1,6 +1,7 @@
 module MeetupApi
   class Client
     attr_accessor :bearer_token
+
     def initialize(options={})
       raise "Bearer token required" unless options[:bearer_token]
       @bearer_token = options[:bearer_token]

@@ -82,6 +82,16 @@ describe UserInteractor::MeetupUserFactory do
         auth = u.authorizations.for_provider('meetup').first
         auth.extra_data.should == @meetup_auth
       end
+
+      it "should update photos for the user" do
+        i = UserInteractor::MeetupUserFactory.new(@meetup_auth)
+        u = i.find_or_create_user
+        u.photos.should_not be_empty
+        u.photos.length.should == 1
+        p = u.photos.first
+        p.url.should == 'http://photos3.meetupstatic.com/photos/member/4/9/a/e/member_123456789.jpeg'
+        p.kind.should == 'profile'
+      end
     end
 
     context "with lapsed auth" do

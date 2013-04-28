@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   has_many :authorizations, dependent: :destroy
   has_many :credentials, dependent: :destroy
 
+  has_many :photos, as: :photoable
+
   validates_uniqueness_of :email
   validates_confirmation_of :password
 

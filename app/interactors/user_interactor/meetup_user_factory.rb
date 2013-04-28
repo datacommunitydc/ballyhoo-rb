@@ -14,6 +14,7 @@ module UserInteractor
       locate_user(auth_set.first)
 
       refresh_credentials
+      refresh_photos
 
       user
     end
@@ -58,6 +59,14 @@ module UserInteractor
             expires_at: Time.at(auth_hash['credentials']['expires_at'].to_i)
           )
         end
+      end
+
+      def refresh_photos
+        p = user.photos.by_kind('profile').first
+        p = user.photos.build unless p
+        p.url = auth_hash['info']['photo_url']
+        p.kind = 'profile'
+        p.save
       end
   end
 end

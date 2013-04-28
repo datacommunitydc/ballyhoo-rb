@@ -26,21 +26,21 @@ module MeetupApi
       Group.new(
         id: h.id, 
         name: h.name,
-        urlname: h.urlname,
-        description: h.description,
-        coord: Coord.new(lat: h.lat, lon: h.lon),
-        visibility: h.visibility,
-        organizer: Member.new(id: h.organizer.member_id, name: h.organizer.name),
-        link: h.link,
-        location: Address.new(city: h.city, state: h.state, country: h.country),
-        join_mode: h.join_mode,
-        who: h.who,
-        category: Category.build_from_api_hash(h.category),
         created: Time.at(h.created.to_i / 1000),
-        rating: h.rating,
+        description: h.description,
+        join_mode: h.join_mode,
+        link: h.link,
         member_count: h.members,
+        rating: h.rating,
+        urlname: h.urlname,
+        visibility: h.visibility,
+        who: h.who,
+        topics: h.topics.map{|t| Topic.build_from_api_hash(t) },
+        category: Category.build_from_api_hash(h.category),
+        coord: Coord.new(lat: h.lat, lon: h.lon),
         group_photo: Photo.build_from_api_hash(h.group_photo),
-        topics: h.topics.map{|t| Topic.build_from_api_hash(t) }
+        location: Address.new(city: h.city, state: h.state, country: h.country),
+        organizer: Member.new(id: h.organizer.member_id, name: h.organizer.name),
       )
     end
   end
