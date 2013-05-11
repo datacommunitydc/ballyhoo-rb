@@ -29,17 +29,16 @@ def make_users
     # user 3 = normal for #1, admin for #2
     # user 4 = member of no meetups
     u_normal = User.create(email: 'normal@example.com', meetups: Meetup.all)
-    u_damare = User.create(email: 'damare@example.com', meetups: Meetup.all, admin:true)
+    u_damare = User.create(email: 'damare@example.com', meetups: Meetup.all) # TODO:, admin:true)
     u_special = User.create(email: 'special@example.com', meetups: Meetup.all[0..1])
     # flip admin bit?
     u_nobody = User.create(email: 'nobody@example.com')
 end
 
 def make_announcements
-    # users = User.all 
-    # user = users.first
-    # followed_users = users[2..50]
-    # followers = users[3..40]
-    # followed_users.each { |followed| user.follow!(followed) }
-    # followers.each { |follower| follower.follow!(user) }
+    users = User.all 
+    user = users.first
+    meetups = Meetup.all
+    meetup = meetups.first
+    a1 = Announcement.create(user: user, meetup:meetup, message: "Foo!", url: "http://bar.com")
 end

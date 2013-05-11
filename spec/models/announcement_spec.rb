@@ -2,13 +2,14 @@ require 'spec_helper'
 
 describe Announcement do
   
-  let(:user) { FactoryGirl.create(:user) }
-  let(:meetup) { FactoryGirl.create(:meetup) }
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:meetup) { FactoryGirl.create(:meetup) }
 
   before do
     # get user_id for free -- what about meetup_id?
     @ann = user.announcements.new(meetup_id: meetup.id, status: "Visible", order: 10,
         message: "Hiring rockstars!", url: "http://cnn.com")
+    @ann2 = FactoryGirl.create(:announcement, user: user, meetup: meetup, order: 5)
   end
 
   subject { @ann }
