@@ -17,4 +17,5 @@
 
 class Meetup < ActiveRecord::Base
   has_many :users, through: :user_meetup
+  has_many :announcements
 end

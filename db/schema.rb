@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130421120500) do
+ActiveRecord::Schema.define(version: 20130511200304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "announcements", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "meetup_id"
+    t.string   "status"
+    t.float    "order"
+    t.string   "message"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "announcements", ["meetup_id"], name: "index_announcements_on_meetup_id"
+  add_index "announcements", ["user_id", "meetup_id"], name: "index_announcements_on_user_id_and_meetup_id"
 
   create_table "authorizations", force: true do |t|
     t.integer  "user_id"
@@ -23,6 +37,7 @@ ActiveRecord::Schema.define(version: 20130421120500) do
     t.boolean  "current"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "extra_data"
   end
 
   create_table "credentials", force: true do |t|
@@ -46,6 +61,18 @@ ActiveRecord::Schema.define(version: 20130421120500) do
     t.datetime "updated_at"
     t.integer  "meetup_ident"
     t.string   "photo_url"
+  end
+
+  create_table "photos", force: true do |t|
+    t.integer  "photoable_id"
+    t.string   "photoable_type"
+    t.string   "url"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "kind"
+    t.string   "label"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_meetups", force: true do |t|
