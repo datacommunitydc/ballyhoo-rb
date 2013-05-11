@@ -38,6 +38,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # Use unicorn as the app server
 # gem 'unicorn'
 
+#gem 'protected_attributes', :github => 'rails/protected_attributes'
+
 group :development do
   gem 'capistrano'
   gem 'annotate'

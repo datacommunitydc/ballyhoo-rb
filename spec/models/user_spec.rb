@@ -120,4 +120,24 @@ describe User do
     end
   end
 
+  it { should respond_to(:announcements) }
+
+  describe "announcement associations" do
+
+    before :all do
+        @user = FactoryGirl.create(:user, :with_meetups)
+        #@meetup = FactoryGirl.create(:meetup)
+    end
+    # BUG: the meetups don't seem to exist? so the objects aren't valid.
+    let!(:first_announcement) do 
+      FactoryGirl.create(:announcement, user: @user, meetup: @user.meetups[1], order: 10)
+    end
+    let!(:second_announcement) do
+      FactoryGirl.create(:announcement, user: @user, meetup: @user.meetups[1], order: 5)
+    end
+
+    it "should have the right announcements in the right order" do
+      @user.announcements.should == [first_announcement, second_announcement]
+    end
+  end
 end
