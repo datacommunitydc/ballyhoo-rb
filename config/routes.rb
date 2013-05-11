@@ -7,6 +7,8 @@ Ballyhoo::Application.routes.draw do
   get '/welcome', to: 'home#index', as: :welcome
   get '/home', to: 'home#index'
 
+  get ':url_name', to: 'meetup#view', as: :meetup
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

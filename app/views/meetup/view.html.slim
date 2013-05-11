@@ -1,0 +1,6 @@
+= provide :title, @meetup.name
+.announcements
+ul
+  - @announcements.each do |announcement|
+    li
+      #{announcement.message}
