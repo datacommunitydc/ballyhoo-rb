@@ -1,6 +1,7 @@
 Ballyhoo::Application.routes.draw do
   resources :meetups, only: [] do
     resources :announcements
+    resource :announcement_order, only: %i{edit update}
   end
 
   root to: 'sessions#index'
