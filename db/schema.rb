@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130428021404) do
+ActiveRecord::Schema.define(version: 20130513014550) do
+
+  create_table "announcements", force: true do |t|
+    t.integer  "meetup_id"
+    t.integer  "user_id"
+    t.string   "status"
+    t.integer  "display_order"
+    t.string   "announcer_name"
+    t.string   "message"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "authorizations", force: true do |t|
     t.integer  "user_id"
@@ -71,6 +83,7 @@ ActiveRecord::Schema.define(version: 20130428021404) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
 end
