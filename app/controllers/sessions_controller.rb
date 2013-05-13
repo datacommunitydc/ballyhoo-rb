@@ -2,6 +2,8 @@ class SessionsController < ApplicationController
   skip_before_filter :login_required
   skip_before_filter :verify_authenticity_token, only: [:create]
 
+  layout 'sessions'
+
   def index
   end
 

@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title Ballyhoo
+    = stylesheet_link_tag "sessions", media: "all"
+
+body
+  .container
+    - if flash[:error]
+      .flash
+        .error= flash[:error]
+    = yield
+
