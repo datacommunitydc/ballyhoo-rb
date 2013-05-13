@@ -18,4 +18,23 @@
 require 'spec_helper'
 
 describe Announcement do
+  describe "status scopes" do
+    before :all do
+      @queued   = FactoryGirl.create_list(:announcement, 3, status: 'queued')
+      @visible  = FactoryGirl.create_list(:announcement, 3, status: 'visible')
+      @archived = FactoryGirl.create_list(:announcement, 3, status: 'archived')
+    end
+
+    it "returns queued for queued" do
+      Announcement.queued.to_a.should == @queued
+    end
+
+    it "returns visible for visible" do
+      Announcement.visible.to_a.should == @visible
+    end
+
+    it "returns archived for archived" do
+      Announcement.archived.to_a.should == @archived
+    end
+  end
 end

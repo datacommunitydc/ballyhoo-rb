@@ -18,4 +18,20 @@
 class Announcement < ActiveRecord::Base
   belongs_to :meetup
   belongs_to :user
+
+  STATUSES = %w{queued visible archived}
+  INITIAL_STATUS = 'queued'
+  validates_inclusion_of :status, in: STATUSES
+
+  STATUSES.each do |sta|
+    scope sta, ->{ where(status: sta) }
+  end
+
+  before_save :set_default_status
+
+  private
+
+  def set_default_status
+    self.status = INITIAL_STATUS unless status.present?
+  end
 end
