@@ -27,7 +27,7 @@ class Announcement < ActiveRecord::Base
     scope sta, ->{ where(status: sta) }
   end
 
-  before_save :set_default_status
+  before_validation :set_default_status
 
   private
 

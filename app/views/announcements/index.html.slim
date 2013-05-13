@@ -2,4 +2,6 @@ h1 Announcements for #{meetup.name}
 
 ul
   - @announcements.each do |ann|
-    li= ann.message
+    li From #{ann.display_name}: #{link_to ann.url, ann.message}
+
+= link_to "Add an announcement", new_meetup_announcement_path(meetup)
