@@ -10,6 +10,9 @@ gem 'omniauth-meetup'
 
 gem 'slim-rails'
 
+gem 'httparty'
+
+gem 'virtus'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,8 +29,9 @@ end
 
 gem 'jquery-rails'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# Turbolinks makes following links in your web application faster. Read more:
+# https://github.com/rails/turbolinks
+#gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.0.1'

@@ -1,0 +1,7 @@
+.meetup-wrap
+  img.logo width='200' height='200' src='#'
+  .content
+    = meetup.name
+    = link_to 'Announce', new_meetup_announcement_path(meetup)
+    = link_to 'View', meetup_announcements_path(meetup)
+    = link_to 'Admin', edit_meetup_announcement_order_path(meetup)

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20130407154454
+# Schema version: 20130427181838
 #
 # Table name: authorizations
 #
@@ -10,6 +10,7 @@
 #  current    :boolean
 #  created_at :datetime
 #  updated_at :datetime
+#  extra_data :text
 #
 
 require 'spec_helper'

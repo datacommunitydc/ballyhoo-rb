@@ -17,4 +17,15 @@
 
 class Meetup < ActiveRecord::Base
   has_many :users, through: :user_meetup
+  has_many :photos, as: :photoable
+  has_many :announcements
+
+  def self.build_from_api(g)
+    Meetup.new(
+      name: g.name,
+      url_name: g.urlname,
+      logo_url: g.group_photo.link,
+      meetup_ident: g.id
+    )
+  end
 end

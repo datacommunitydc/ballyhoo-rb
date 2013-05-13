@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130421120500) do
+ActiveRecord::Schema.define(version: 20130513014550) do
+
+  create_table "announcements", force: true do |t|
+    t.integer  "meetup_id"
+    t.integer  "user_id"
+    t.string   "status"
+    t.integer  "display_order"
+    t.string   "announcer_name"
+    t.string   "message"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "authorizations", force: true do |t|
     t.integer  "user_id"
@@ -20,6 +32,7 @@ ActiveRecord::Schema.define(version: 20130421120500) do
     t.boolean  "current"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "extra_data"
   end
 
   create_table "credentials", force: true do |t|
@@ -45,6 +58,18 @@ ActiveRecord::Schema.define(version: 20130421120500) do
     t.string   "photo_url"
   end
 
+  create_table "photos", force: true do |t|
+    t.integer  "photoable_id"
+    t.string   "photoable_type"
+    t.string   "url"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "kind"
+    t.string   "label"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_meetups", force: true do |t|
     t.integer  "user_id"
     t.integer  "meetup_id"
@@ -58,6 +83,7 @@ ActiveRecord::Schema.define(version: 20130421120500) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
 end

@@ -1,5 +1,3 @@
-ul
+ul.user_meetups
   - current_user.meetups.each do |meetup|
-    li
-      Meetup: #{meetup.name}
-
+    li= render meetup
