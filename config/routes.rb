@@ -1,4 +1,8 @@
 Ballyhoo::Application.routes.draw do
+  resources :meetups, only: [] do
+    resources :announcements
+  end
+
   root to: 'sessions#index'
 
   get '/auth/:provider/callback', to: 'sessions#create'

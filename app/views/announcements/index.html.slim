@@ -1,0 +1,5 @@
+h1 Announcements for #{meetup.name}
+
+ul
+  - @announcements.each do |ann|
+    li= ann.message
