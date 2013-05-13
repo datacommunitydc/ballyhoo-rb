@@ -83,24 +83,6 @@ describe UserInteractor::UserAuthConsumer do
       consumer.find_or_create_user
     end
 
-    context "new user" do
-      #before :all do
-      #  consumer = UserInteractor::UserAuthConsumer.new(meetup_auth)
-      #  @user = consumer.find_or_create_user
-      #end
-      it "creates an authorization based on the auth data"
-      it "creates credentials based on the auth data"
-      it "creates a user based on the auth data"
-    end
-
-    context "existing user" do
-      context "existing authorization" do
-
-      end
-      context "new authorization" do
-
-      end
-    end
   end
 end
 

@@ -74,8 +74,7 @@ describe MeetupFinder do
       end
 
   end
+
   it "looks up the meetups where the user is an organizer"
-
-
 
 end

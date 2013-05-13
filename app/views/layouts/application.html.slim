@@ -6,8 +6,26 @@ html
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
 
-body
-  - if flash[:error]
-    .flash
-      .error= flash[:error]
-  = yield
+body ng-app="ballyhoo"
+  .navbar.navbar-inverse.navbar-fixed-top
+    .navbar-inner
+      .container
+        button.btn.btn-navbar type="button" data-toggle="collapse" data-target=".nav-collapse"
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.brand Ballyhoo
+        .nav-collapse.collapse
+          ul.nav
+            li.active
+              a href="home" Home
+            li
+              a href="home" About
+            li
+              a href="home" Contact
+
+  .container
+    - if flash[:error]
+      .flash
+        .error= flash[:error]
+    = yield

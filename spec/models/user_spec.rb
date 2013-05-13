@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20130415025142
+# Schema version: 20130513014550
 #
 # Table name: users
 #
@@ -8,6 +8,7 @@
 #  password_digest :string(255)
 #  created_at      :datetime
 #  updated_at      :datetime
+#  name            :string(255)
 #
 
 require 'spec_helper'
@@ -117,6 +118,18 @@ describe User do
         # no overlap (all new serials)
         (serials & new_serials).should == []
       end
+    end
+  end
+
+  it "should have a name" do
+    user = FactoryGirl.create(:user)
+    user.name.should be_present
+  end
+
+  describe "#display_name" do
+    it "should default to the user's name" do
+      user = FactoryGirl.create(:user)
+      user.display_name.should == user.name
     end
   end
 

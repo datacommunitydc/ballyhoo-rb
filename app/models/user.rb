@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20130415025142
+# Schema version: 20130513014550
 #
 # Table name: users
 #
@@ -8,6 +8,7 @@
 #  password_digest :string(255)
 #  created_at      :datetime
 #  updated_at      :datetime
+#  name            :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -16,6 +17,11 @@ class User < ActiveRecord::Base
 
   has_many :user_meetups, dependent: :destroy
   has_many :meetups, through: :user_meetups
+
+  has_many :authorizations, dependent: :destroy
+  has_many :credentials, dependent: :destroy
+
+  has_many :photos, as: :photoable
 
   validates_uniqueness_of :email
   validates_confirmation_of :password
@@ -36,5 +42,9 @@ class User < ActiveRecord::Base
       self.user_meetups = list
     end
     save
+  end
+
+  def display_name
+    name
   end
 end

@@ -18,4 +18,10 @@
 # example, meetup returns a token and refresh token as part of
 # authorization that we can later use to do things on behalf of the user
 class Credential < ActiveRecord::Base
+
+  belongs_to :user
+
+  def expired?
+    expires_at < Time.now
+  end
 end
