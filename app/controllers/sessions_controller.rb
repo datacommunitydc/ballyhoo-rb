@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   skip_before_filter :login_required
   skip_before_filter :verify_authenticity_token, only: [:create]
 
-  layout 'sessions'
+  layout 'application'
 
   def index
   end
@@ -20,11 +20,11 @@ class SessionsController < ApplicationController
       MeetupFinder.default_strategy = :developer if Rails.env == 'development'
       user.refresh_meetups!
       self.current_user = user
-      redirect_to welcome_path
+      redirect_to root_path #welcome_path
     else
       self.current_user = nil
       flash[:error] = "Invalid authentication!"
-      redirect_to root_path
+      redirect_to login_path #root_path
     end
   end
 

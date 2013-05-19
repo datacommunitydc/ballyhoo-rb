@@ -1,5 +1,3 @@
-h1 Announcements for #{meetup.name}
-
 ul
   - @announcements.each do |ann|
     li From #{ann.display_name}: #{link_to ann.message, ann.url}
