@@ -24,12 +24,6 @@ describe AnnouncementsController do
       end
     end
 
-    it "should wrap them in AnnouncementPresenters" do
-      get :index, meetup_id: @meetup.id
-      anns = assigns(:announcements)
-      anns.all?{|n| n.kind_of?(AnnouncementPresenter) }.should be_true
-    end
-
     context "as json" do
       it "should render json for the announcements" do
         get :index, meetup_id: @meetup.id, format: :json

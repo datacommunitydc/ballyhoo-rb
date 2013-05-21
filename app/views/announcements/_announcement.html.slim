@@ -1,0 +1,9 @@
+- announcement = AnnouncementPresenter.new(announcement)
+div class="announcement #{layout}"
+  .left
+    = image_tag announcement.photo, width: 100, height: 100
+  .right
+    ul
+      li= announcement.display_name
+      li= link_to announcement.url, announcement.url
+      li= announcement.message

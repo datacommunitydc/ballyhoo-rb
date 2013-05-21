@@ -46,6 +46,8 @@ group :development do
   gem 'capistrano'
   gem 'annotate'
   gem 'simplecov'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 # To use debugger

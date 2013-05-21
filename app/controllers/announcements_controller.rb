@@ -1,6 +1,6 @@
 class AnnouncementsController < ApplicationController
   def index
-    @announcements = meetup.announcements.map{|n| AnnouncementPresenter.new(n) }
+    @announcements = meetup.announcements
   end
 
   def new
