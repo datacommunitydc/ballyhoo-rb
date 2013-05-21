@@ -25,7 +25,12 @@ class Announcement < ActiveRecord::Base
 
   STATUSES.each do |sta|
     scope sta, ->{ where(status: sta) }
+    define_method "#{sta}?" do
+      self.status == sta
+    end
   end
+
+  scope :recent, ->{ order(created_at: :desc) }
 
   before_validation :set_default_status
 

@@ -1,3 +1,31 @@
-h1 Admin #{meetup.name}
+= form_for [meetup, AnnouncementOrder.new(meetup: meetup)] do |f|
+  .announcements-order-editor
 
-lists of announcements, and stuff
+    .queued
+      h2 Queued
+      = render @announcements.queued, layout: :small
+      .foot
+        = link_to "Make All Visible", "#"
+
+    .visible
+      h2 Visible
+      = render @announcements.visible, layout: :small
+      .foot
+        = link_to "Archive All", "#"
+
+    .archived
+      h2 Archived
+      = render @announcements.archived, layout: :small
+      .foot
+        = link_to "Delete All", "#"
+
+    .options-save
+      ul
+        li
+          = f.check_box :enabled
+          = f.label :enabled, "Announcements Enabled"
+        li
+          = f.check_box :allow_anon
+          = f.label :allow_anon, "Anonymous View Enabled"
+
+      = f.submit "Save"

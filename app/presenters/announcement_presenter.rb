@@ -11,4 +11,14 @@ class AnnouncementPresenter < SimpleDelegator
       user.display_name
     end
   end
+
+  def photo
+    return default_photo_url unless user
+    p = user.primary_photo
+    p ? p.url : default_photo_url
+  end
+
+  def default_photo_url
+    ActionController::Base.helpers.asset_path 'default_photo'
+  end
 end
