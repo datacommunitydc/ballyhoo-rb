@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_many :credentials, dependent: :destroy
 
   has_many :photos, as: :photoable
+  has_many :announcements
 
   validates_uniqueness_of :email
   validates_confirmation_of :password
@@ -46,5 +47,9 @@ class User < ActiveRecord::Base
 
   def display_name
     name
+  end
+
+  def primary_photo
+    photos.first
   end
 end

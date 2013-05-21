@@ -1,6 +1,10 @@
 Ballyhoo::Application.routes.draw do
   resources :meetups, only: [] do
-    resources :announcements, only: %i{index new create}
+    resources :announcements do
+      member do
+        post 'requeue'
+      end
+    end
     resource :announcement_order, only: %i{edit update}
   end
 
