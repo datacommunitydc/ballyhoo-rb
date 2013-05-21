@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   protected
     def login_required
       # TODO refactor to something that stores the path to redirect them back to
-      redirect_to root_path unless current_user
+      redirect_to login_path unless current_user
     end
 
     def current_user

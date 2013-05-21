@@ -18,9 +18,9 @@ describe SessionsController do
 
   describe "get :create" do
     context "invalid auth" do
-      it "redirects to root" do
+      it "redirects to login" do
         get :create, provider: :meetup
-        response.should redirect_to(root_path)
+        response.should redirect_to(login_path)
       end
     end
 

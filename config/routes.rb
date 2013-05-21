@@ -8,13 +8,15 @@ Ballyhoo::Application.routes.draw do
     resource :announcement_order, only: %i{edit update}
   end
 
-  root to: 'sessions#index'
+  # want root to go to home#index, but redirect to /login aka sessions#index if not logged in
+  root to: 'home#index'
+  #root to: 'sessions#index'
 
   get '/auth/:provider/callback', to: 'sessions#create'
   post '/auth/:provider/callback', to: 'sessions#create'
 
-  get '/welcome', to: 'home#index', as: :welcome
-
+  #get '/welcome', to: 'home#index', as: :welcome
+  get '/login', to: 'sessions#index', as: :login
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

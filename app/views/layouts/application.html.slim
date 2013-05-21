@@ -14,9 +14,9 @@ body ng-app="ballyhoo"
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        a.brand Ballyhoo
+        = link_to "Ballyhoo", root_path, class: 'brand'
         - if defined?(meetup)
-          a.brand= meetup.name
+          = link_to meetup.name, meetup_announcements_path(meetup), class: 'brand'
         .nav-collapse.collapse
           ul.nav
             = render "layouts/nav_options"
