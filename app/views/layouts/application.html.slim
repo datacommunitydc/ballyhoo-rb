@@ -15,14 +15,11 @@ body ng-app="ballyhoo"
           span.icon-bar
           span.icon-bar
         a.brand Ballyhoo
+        - if defined?(meetup)
+          a.brand= meetup.name
         .nav-collapse.collapse
           ul.nav
-            li.active
-              a href="home" Home
-            li
-              a href="home" About
-            li
-              a href="home" Contact
+            = render "layouts/nav_options"
 
   .container
     - if flash[:error]

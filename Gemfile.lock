@@ -31,6 +31,11 @@ GEM
     atomic (1.1.6)
     backports (2.6.7)
     bcrypt-ruby (3.0.1)
+    better_errors (0.8.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.1)
+      debug_inspector (>= 0.0.1)
     bootstrap-sass-rails (2.3.1.1)
       railties (>= 3.1.0)
       sass-rails (>= 3.1.0)
@@ -51,6 +56,7 @@ GEM
     coffee-script-source (1.6.2)
     columnize (0.3.6)
     database_cleaner (0.9.1)
+    debug_inspector (0.0.2)
     debugger (1.5.0)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -228,6 +234,8 @@ PLATFORMS
 DEPENDENCIES
   annotate
   bcrypt-ruby (~> 3.0.0)
+  better_errors
+  binding_of_caller
   bootstrap-sass-rails
   capistrano
   coffee-rails (~> 4.0.0.beta1)
