@@ -1,5 +1,5 @@
 legend Your recent announcements
-- current_user.announcements.recent.limit(3).each do |ann|
+- current_user.announcements.for_meetup(meetup).recent.limit(3).each do |ann|
   .container-fluid.recent-announcement
     / Announcement data
     .row-fluid

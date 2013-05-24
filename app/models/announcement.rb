@@ -31,6 +31,7 @@ class Announcement < ActiveRecord::Base
   end
 
   scope :recent, ->{ order(created_at: :desc) }
+  scope :for_meetup, ->(m){ where(meetup_id: m) }
 
   before_validation :set_default_status
 
