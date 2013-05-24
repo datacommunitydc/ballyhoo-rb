@@ -22,6 +22,10 @@ module MeetupApi
     attribute :join_mode, String
     attribute :visibility, String
 
+    def self.find_all_for_user(member_id, token)
+      HTTParty.get("https://api.meetup.com/2/groups.json?member_id=10624849&access_token=#{token}")
+    end
+
     def self.build_from_api_hash(h)
       Group.new(
         id: h.id, 
@@ -38,7 +42,7 @@ module MeetupApi
         topics: h.topics.map{|t| Topic.build_from_api_hash(t) },
         category: Category.build_from_api_hash(h.category),
         coord: Coord.new(lat: h.lat, lon: h.lon),
-        group_photo: Photo.build_from_api_hash(h.group_photo),
+        group_photo: h.group_photo ? Photo.build_from_api_hash(h.group_photo) : nil,
         location: Address.new(city: h.city, state: h.state, country: h.country),
         organizer: Member.new(id: h.organizer.member_id, name: h.organizer.name),
       )

@@ -21,11 +21,15 @@ class Meetup < ActiveRecord::Base
   has_many :announcements
 
   def self.build_from_api(g)
-    Meetup.new(
-      name: g.name,
-      url_name: g.urlname,
-      logo_url: g.group_photo.link,
-      meetup_ident: g.id
-    )
+    if meetup = Meetup.find_by_meetup_ident(g.id)
+      meetup
+    else
+      Meetup.create(
+        name: g.name,
+        url_name: g.urlname,
+        logo_url: g.group_photo.try(:link),
+        meetup_ident: g.id
+      )
+    end
   end
 end

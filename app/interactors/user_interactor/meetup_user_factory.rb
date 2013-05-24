@@ -27,7 +27,11 @@ module UserInteractor
             current: true,
             extra_data: auth_hash
           )
-          auth.user
+          u = auth.user
+          u.update_attributes(
+            name: auth_hash.info.name
+          )
+          u
         else
           create_user!
         end
@@ -38,7 +42,7 @@ module UserInteractor
       end
 
       def create_user!
-        user = User.new
+        user = User.new(name: auth_hash.info.name)
         user.authorizations.build(
           provider: 'meetup',
           remote_uid: meetup_uid,

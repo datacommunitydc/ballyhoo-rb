@@ -1,8 +1,12 @@
-.meetup-wrap
-  img.logo width='200' height='200' src='#'
-  .content
-    ul
-      li= meetup.name
-      li= link_to 'Announce', new_meetup_announcement_path(meetup)
-      li= link_to 'View', meetup_announcements_path(meetup)
-      li= link_to 'Admin', edit_meetup_announcement_order_path(meetup)
+.span6.well.meetup
+  .row-fluid
+    .span8.logo
+      = image_tag meetup.logo_url
+    .span4.inner-nav
+      ul
+        li= link_to 'Announce', new_meetup_announcement_path(meetup), class: 'btn btn-danger'
+        li= link_to 'View', meetup_announcements_path(meetup), class: 'btn btn-primary'
+        li= link_to 'Admin', edit_meetup_announcement_order_path(meetup), class: 'btn btn-info'
+  .row-fluid
+    .span12
+      h4= meetup.name

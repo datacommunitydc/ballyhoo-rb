@@ -1,3 +1,4 @@
-ul.user_meetups
-  - current_user.meetups.each do |meetup|
-    li= render meetup
+- current_user.meetups.in_groups_of(2).each do |meetups|
+  .row-fluid
+    - meetups.each do |meetup|
+      = render meetup if meetup

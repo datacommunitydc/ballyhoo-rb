@@ -21,6 +21,7 @@ class Authorization < ActiveRecord::Base
 
   scope :for_provider, ->(p) { where(provider: p) }
   scope :with_remote_uid, ->(uid) { where(remote_uid: uid) }
+  scope :current, -> { where(current: true) }
 
   belongs_to :user
 

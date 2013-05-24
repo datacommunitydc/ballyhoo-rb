@@ -3,4 +3,6 @@
   li= link_to "View", meetup_announcements_path(meetup)
   li= link_to "Admin", edit_meetup_announcement_order_path(meetup)
 li= link_to "About", "#"
-li= link_to "Logout", logout_path
+- if current_user
+  li
+    = link_to "Logout #{current_user.email}", logout_path
