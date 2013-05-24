@@ -1,5 +1,7 @@
-h1 New Announcement
-
-ul
-  li.left= render 'form'
-  li.right= render 'your_recent_announcements'
+.container-fluid
+  .row-fluid
+    .span5.new-announcement
+      = form_for [meetup, meetup.announcements.build(announcer_name: current_user.display_name)] do |f|
+        = render 'form', f: f
+    .span7.recent-announcements
+      = render 'your_recent_announcements'

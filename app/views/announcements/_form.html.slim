@@ -1,13 +1,15 @@
-= form_for [meetup, meetup.announcements.build(announcer_name: current_user.display_name)] do |f|
-  dl
-    dt= f.label :announcer_name, 'Your Name'
-    dd= f.text_field :announcer_name
+fieldset
+  legend New Announcement
+  = f.label :announcer_name, 'Your Name'
+  = f.text_field :announcer_name
 
-    dt= f.label :url
-    dd= f.text_field :url
+  = f.label :url
+  = f.text_field :url
 
-    dt= f.label :message, 'Announcement'
-    dd= f.text_area :message
+  = f.label :message, 'Announcement'
+  = f.text_area :message
 
-    dt= f.submit 'Save'
-    dd= link_to 'Cancel', root_path
+  .controls
+    .btn-group
+      = f.submit 'Save', class: 'btn btn-default'
+      = link_to 'Cancel', root_path, class: 'btn btn-danger'

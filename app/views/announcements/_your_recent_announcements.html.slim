@@ -1,13 +1,21 @@
-| Your recent announcements
-ul
-  - current_user.announcements.recent.limit(3).each do |ann|
-    li
-      / Announcement data
+legend Your recent announcements
+- current_user.announcements.recent.limit(3).each do |ann|
+  .container-fluid.recent-announcement
+    / Announcement data
+    .row-fluid
       = render ann, layout: :small
-      / Controls box
-      #{time_ago_in_words ann.created_at} ago
-      = ann.status
-      - if ann.archived?
-        = link_to "Requeue", requeue_meetup_announcement_path(ann.meetup, ann)
-      = link_to "Delete", meetup_announcement_path(ann.meetup, ann, method: :delete)
+    / Controls box
+    .recent-control
+      .row-fluid
+        .offset2.span4
+          .row-fluid
+            #{time_ago_in_words ann.created_at} ago
+          .row-fluid
+            - if ann.archived?
+              = link_to "Requeue", requeue_meetup_announcement_path(ann.meetup, ann)
+        .span4
+          .row-fluid
+            = ann.status
+          .row-fluid
+            = link_to "Delete", meetup_announcement_path(ann.meetup, ann, method: :delete)
 
