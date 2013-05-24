@@ -49,10 +49,9 @@ group :development do
   gem 'simplecov'
   gem 'better_errors'
   gem 'binding_of_caller'
+  # To use debugger
+  gem 'debugger'
 end
-
-# To use debugger
-gem 'debugger'
 
 group :test do
   gem 'rspec-rails'
