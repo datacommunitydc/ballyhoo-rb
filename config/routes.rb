@@ -17,6 +17,7 @@ Ballyhoo::Application.routes.draw do
 
   #get '/welcome', to: 'home#index', as: :welcome
   get '/login', to: 'sessions#index', as: :login
+  get '/logout', to: 'sessions#destroy', as: :logout
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
