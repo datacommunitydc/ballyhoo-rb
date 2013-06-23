@@ -15,21 +15,18 @@ gem 'httparty'
 
 gem 'virtus'
 
+gem 'sass-rails',   '~> 4.0.0.beta1'
+gem 'coffee-rails', '~> 4.0.0.beta1'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :production, :assets do
-  gem 'sass-rails',   '~> 4.0.0.beta1'
-  gem 'coffee-rails', '~> 4.0.0.beta1'
-
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', platforms: :ruby
-
   gem 'uglifier', '>= 1.0.3'
-  gem 'bootstrap-sass-rails'
 end
 
-gem 'jquery-rails'
-gem 'jquery-ui-sass-rails'
+# not using jquery-rails and jquery-ui-sass-rails because we're using bower now
 
 # Turbolinks makes following links in your web application faster. Read more:
 # https://github.com/rails/turbolinks

@@ -1,32 +1,32 @@
 = form_for [meetup, AnnouncementOrder.new(meetup: meetup)] do |f|
-  .row.announcements-order-editor
+  .announcements-order-editor.container-fluid
+    .row-fluid ng-controller="announcementsOrderEditor"
 
-    .span3.queued
-      h2 Queued
-      = render @announcements.queued, layout: :small
-      .foot
-        = link_to "Make All Visible", "#"
+      .queued.span3
+        h2 Queued
+        = render @announcements.queued, layout: :small
+        .foot
+          = link_to "Make All Visible", "#"
 
-    .span3.visible
-      h2 Visible
-      = render @announcements.visible, layout: :small
-      .foot
-        = link_to "Archive All", "#"
+      .visible.span3
+        h2 Visible
+        = render @announcements.visible, layout: :small
+        .foot
+          = link_to "Archive All", "#"
 
-    .span3.archived
-      h2 Archived
-      = render @announcements.archived, layout: :small
-      .foot
-        = link_to "Delete All", "#"
+      .archived.span3
+        h2 Archived
+        = render @announcements.archived, layout: :small
+        .foot
+          = link_to "Delete All", "#"
 
-    .span3.options-save
-      ul
-        li
-          = f.check_box :enabled
-          = f.label :enabled, "Announcements Enabled"
-        li
-          = f.check_box :allow_anon
-          = f.label :allow_anon, "Anonymous View Enabled"
+      .options-save.span3
+        ul
+          li
+            = f.check_box :enabled
+            = f.label :enabled, "Announcements Enabled"
+          li
+            = f.check_box :allow_anon
+            = f.label :allow_anon, "Anonymous View Enabled"
 
-      .foot
         = f.submit "Save"

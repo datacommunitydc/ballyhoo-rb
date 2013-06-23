@@ -1,4 +1,8 @@
 class AnnouncementOrdersController < ApplicationController
+  def show
+    @announcements = meetup.announcements
+  end
+
   def edit
     @announcements = meetup.announcements
   end
