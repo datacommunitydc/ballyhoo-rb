@@ -1,0 +1,10 @@
+{
+  "dependencies" : {
+    "jquery": "1.8",
+    "jquery-ui": "1.10.3",
+    "angular": "1.0.7",
+    "angular-resource": "1.0.7",
+    "angular-mocks": "1.0.7",
+    "sass-bootstrap": "2.3.2"
+  }
+}
