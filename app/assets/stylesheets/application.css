@@ -12,3 +12,5 @@
  *= require twitter/bootstrap/_responsive
  *= require_tree .
  */
+
+@import jquery.ui.core

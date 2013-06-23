@@ -1,5 +1,5 @@
 ul
-  - @announcements.each do |ann|
+  - @announcements.visible.each do |ann|
     li= render ann, layout: :big
 
-= link_to "Add an announcement", new_meetup_announcement_path(meetup)
+/= link_to "Add an announcement", new_meetup_announcement_path(meetup)
