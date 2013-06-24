@@ -6,6 +6,7 @@
     "angular": "1.0.7",
     "angular-resource": "1.0.7",
     "angular-mocks": "1.0.7",
-    "angular-ui-sortable": "0.0.1"
+    "angular-ui-sortable": "0.0.1",
+    "underscore": "1.4.4"
   }
 }

@@ -1,34 +1,30 @@
-= form_for [meetup, AnnouncementOrder.new(meetup: meetup)] do |f|
+= form_for [meetup, AnnouncementOrder.new(meetup: meetup)], html: {"ng-controller" => "AnnouncementsOrderEditor"} do |f|
   .announcements-order-editor.container-fluid
-    .row-fluid ng-controller="announcementsOrderEditor"
+    .row-fluid
 
       .queued.span3
-        h2 Queued
-        ul ui-sortable="true" ng-model="announcements.queued"
-          li ng-repeat="ann in announcements.queued"
-            announcement announcement="ann" layout="small"
+        = render 'column_body', set: 'queued'
         .foot
-          = link_to "Make All Visible", "#"
+          a.btn ng-click="makeAllVisible()" Make All Visible
 
       .visible.span3
-        h2 Visible
-        = render @announcements.visible, layout: :small
+        = render 'column_body', set: 'visible'
         .foot
-          = link_to "Archive All", "#"
+          a.btn ng-click="archiveAll()" Archive All
 
       .archived.span3
-        h2 Archived
-        = render @announcements.archived, layout: :small
+        = render 'column_body', set: 'archived'
         .foot
-          = link_to "Delete All", "#"
+          a.btn ng-click="deleteAll()" Delete All
 
       .options-save.span3
-        ul
-          li
-            = f.check_box :enabled
-            = f.label :enabled, "Announcements Enabled"
-          li
-            = f.check_box :allow_anon
-            = f.label :allow_anon, "Anonymous View Enabled"
+        /
+          ul
+            li
+              = f.check_box :enabled
+              = f.label :enabled, "Announcements Enabled"
+            li
+              = f.check_box :allow_anon
+              = f.label :allow_anon, "Anonymous View Enabled"
 
-        = f.submit "Save"
+        button.btn type="button" ng-click="save()" Save

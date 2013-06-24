@@ -15,4 +15,5 @@
 //= require angular/angular
 //= require angular-resource/angular-resource
 //= require angular-ui-sortable/src/sortable
+//= require underscore/underscore
 //= require_tree .

@@ -8,7 +8,7 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require sass-bootstrap/bootstrap-2.3.2
+ *= require sass-bootstrap/lib/bootstrap
  *= require sass-bootstrap/bootstrap-responsive-2.3.2
  *= require_tree .
  */
