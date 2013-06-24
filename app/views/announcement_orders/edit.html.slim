@@ -4,7 +4,9 @@
 
       .queued.span3
         h2 Queued
-        = render @announcements.queued, layout: :small
+        ul ui-sortable="true" ng-model="announcements.queued"
+          li ng-repeat="ann in announcements.queued"
+            announcement announcement="ann" layout="small"
         .foot
           = link_to "Make All Visible", "#"
 

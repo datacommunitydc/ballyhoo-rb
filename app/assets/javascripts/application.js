@@ -11,6 +11,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery/jquery
+//= require jquery-ui/ui/jquery-ui
 //= require angular/angular
 //= require angular-resource/angular-resource
+//= require angular-ui-sortable/src/sortable
 //= require_tree .
