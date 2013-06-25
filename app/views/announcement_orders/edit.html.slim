@@ -1,23 +1,20 @@
 = form_for [meetup, AnnouncementOrder.new(meetup: meetup)] do |f|
   .row.announcements-order-editor
 
-    .span3.queued
+    .span3.queued.box
       h2 Queued
       = render @announcements.queued, layout: :small
-      .foot
-        = link_to "Make All Visible", "#"
+      
 
-    .span3.visible
+    .span3.visible.box
       h2 Visible
       = render @announcements.visible, layout: :small
-      .foot
-        = link_to "Archive All", "#"
+      
 
-    .span3.archived
+    .span3.archived.box
       h2 Archived
       = render @announcements.archived, layout: :small
-      .foot
-        = link_to "Delete All", "#"
+      
 
     .span3.options-save
       ul
@@ -28,5 +25,17 @@
           = f.check_box :allow_anon
           = f.label :allow_anon, "Anonymous View Enabled"
 
+      
+  .row.announcements-buttons
+    .span3.queued
+      .foot
+        = link_to "Make All Visible", "#"
+    .span3.visible
+      .foot
+        = link_to "Archive All", "#"
+    .span3.archived
+      .foot
+        = link_to "Delete All", "#"
+    .span3.options-save
       .foot
         = f.submit "Save"
