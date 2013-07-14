@@ -2,17 +2,17 @@
   .announcements-order-editor.container-fluid
     .row-fluid
 
-      .queued.span3
+      .queued.span3.box
         = render 'column_body', set: 'queued'
         .foot
           a.btn ng-click="makeAllVisible()" Make All Visible
 
-      .visible.span3
+      .visible.span3.box
         = render 'column_body', set: 'visible'
         .foot
           a.btn ng-click="archiveAll()" Archive All
 
-      .archived.span3
+      .archived.span3.box
         = render 'column_body', set: 'archived'
         .foot
           a.btn ng-click="deleteAll()" Delete All
@@ -28,3 +28,17 @@
               = f.label :allow_anon, "Anonymous View Enabled"
 
         button.btn type="button" ng-click="save()" Save
+
+  .row.announcements-buttons
+    .span3.queued
+      .foot
+        = link_to "Make All Visible", "#"
+    .span3.visible
+      .foot
+        = link_to "Archive All", "#"
+    .span3.archived
+      .foot
+        = link_to "Delete All", "#"
+    .span3.options-save
+      .foot
+        = f.submit "Save"
