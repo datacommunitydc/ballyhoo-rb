@@ -4,6 +4,12 @@ angular.module('AnnouncementOrder',['ngResource'])
       meetupId = 0
 
       setMeetupId: (mid) -> meetupId = mid
+
+      defaultSet:
+        queued: undefined,
+        visible: undefined,
+        archived: undefined
+
       load: ->
         $http.get("/meetups/#{meetupId}/announcement_order.json")
 

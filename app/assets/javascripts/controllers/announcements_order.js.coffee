@@ -3,11 +3,7 @@ angular.module('AnnouncementsOrderEditor',[])
 
     AnnouncementOrder.setMeetupId $window.location.pathname.match(/\/meetups\/(\d+)\/announcement_order\/edit/)[1]
 
-    $scope.announcements = {
-      queued: undefined,
-      visible: undefined,
-      archived: undefined
-    }
+    $scope.announcements = AnnouncementOrder.defaultSet
 
     $scope.state = { dirty: false }
     $scope.stateClass = ->
@@ -24,7 +20,7 @@ angular.module('AnnouncementsOrderEditor',[])
     $scope.$watch 'announcements.visible', setChanged, true
     $scope.$watch 'announcements.archived', setChanged, true
 
-    $scope.announcements = AnnouncementOrder.load()
+    AnnouncementOrder.load()
       .success (data) ->
         $scope.announcements = data
 
