@@ -1,0 +1,15 @@
+h2= set.titleize
+ul ui-sortable="sortableOptions" ng-model="announcements.#{set}"
+  li ng-repeat="ann in announcements.#{set}"
+    announcement announcement="ann" layout="small"
+    .controls
+
+      - if %w{visible archived}.include?(set)
+        a.btn.btn-mini ng-click="moveLeft('#{set}', ann)"
+          i.icon-arrow-left
+      - else
+        | &nbsp;
+
+      - if %w{queued visible}.include?(set)
+        a.btn.btn-mini.pull-right ng-click="moveRight('#{set}', ann)"
+          i.icon-arrow-right

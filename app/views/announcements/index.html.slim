@@ -1,5 +1,6 @@
-ul
-  - @announcements.visible.each do |ann|
-    li= render ann, layout: :big
+.announcements-index ng-controller="AnnouncementsIndex"
+  ul.unstyled
+    li ng-repeat="ann in announcements"
+      announcement announcement="ann" layout="big"
 
-/= link_to "Add an announcement", new_meetup_announcement_path(meetup)
+  /= link_to "Add an announcement", new_meetup_announcement_path(meetup)

@@ -1,0 +1,14 @@
+div class="announcement {{layout}} well well-small"
+  .row-fluid
+    .span3
+      img src="{{announcement.photo}}" width="100" height="100"
+    .span9
+      ul
+        li
+          | {{announcement.displayName}}
+        li
+          a href="http://{{announcement.url}}"
+            | {{announcement.url}}
+        li
+          | {{announcement.message}}
+

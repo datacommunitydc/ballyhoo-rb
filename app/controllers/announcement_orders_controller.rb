@@ -1,6 +1,17 @@
 class AnnouncementOrdersController < ApplicationController
+  def show
+    @announcements = meetup.announcements
+  end
+
   def edit
     @announcements = meetup.announcements
+  end
+
+  def update
+    params[:announcements].each do |ann|
+      Announcement.find(ann[:id]).update_attributes(ann)
+    end
+    head :ok
   end
 
   private
