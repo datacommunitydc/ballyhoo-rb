@@ -9,7 +9,7 @@ module UserInteractor
     def find_or_create_user
       auth_set = Authorization.
         for_provider('meetup').
-        with_remote_uid(meetup_uid)
+        with_remote_uid(meetup_uid.to_s)
 
       locate_user(auth_set.first)
 
@@ -45,7 +45,7 @@ module UserInteractor
         user = User.new(name: auth_hash.info.name)
         user.authorizations.build(
           provider: 'meetup',
-          remote_uid: meetup_uid,
+          remote_uid: meetup_uid.to_s,
           extra_data: auth_hash
         )
         user.save
@@ -57,7 +57,7 @@ module UserInteractor
         auth_hash['credentials'].slice(*%w{token refresh_token}).each do |k,v|
           user.credentials.create(
             provider: 'meetup',
-            remote_uid: meetup_uid,
+            remote_uid: meetup_uid.to_s,
             kind: k,
             value: v,
             expires_at: Time.at(auth_hash['credentials']['expires_at'].to_i)
