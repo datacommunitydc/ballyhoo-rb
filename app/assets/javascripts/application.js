@@ -15,5 +15,5 @@
 //= require angular/angular
 //= require angular-resource/angular-resource
 //= require angular-ui-sortable/src/sortable
-// trying something    = req no uire underscore/underscore
+//= require underscore/underscore
 //= require_tree .
