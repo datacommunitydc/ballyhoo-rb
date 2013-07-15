@@ -1,5 +1,5 @@
 angular.module('AnnouncementsIndex', [])
-  .controller 'AnnouncementsIndex', ($scope, AnnouncementOrder, $window, $timeout) ->
+  .controller 'AnnouncementsIndex', ['$scope', 'AnnouncementOrder', '$window', '$timeout', ($scope, AnnouncementOrder, $window, $timeout) ->
 
     AnnouncementOrder.setMeetupId $window.location.pathname.match(/\/meetups\/(\d+)\//)[1]
 
@@ -27,4 +27,4 @@ angular.module('AnnouncementsIndex', [])
     # Need to defer initial execution until after any settings directives have
     # had time to parse
     $timeout(tick, 1)
-    
+  ]

@@ -1,5 +1,5 @@
 angular.module('AnnouncementsOrderEditor',[])
-  .controller 'AnnouncementsOrderEditor', ($scope, AnnouncementOrder, $window) ->
+  .controller 'AnnouncementsOrderEditor', ['$scope', 'AnnouncementOrder', '$window', ($scope, AnnouncementOrder, $window) ->
 
     AnnouncementOrder.setMeetupId $window.location.pathname.match(/\/meetups\/(\d+)\/announcement_order\/edit/)[1]
 
@@ -51,3 +51,5 @@ angular.module('AnnouncementsOrderEditor',[])
       AnnouncementOrder.save($scope.announcements)
         .success ->
           $scope.state.dirty = false
+
+  ]

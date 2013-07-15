@@ -1,5 +1,5 @@
 angular.module('AnnouncementOrder',['ngResource'])
-  .factory 'AnnouncementOrder', ($http) ->
+  .factory 'AnnouncementOrder', ['$http', ($http) ->
     ( ->
       meetupId = 0
 
@@ -31,3 +31,4 @@ angular.module('AnnouncementOrder',['ngResource'])
         $http.put "/meetups/#{meetupId}/announcement_order.json", data
 
     )()
+  ]
