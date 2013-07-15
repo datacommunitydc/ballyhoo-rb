@@ -1,14 +1,30 @@
 angular.module('AnnouncementsOrderEditor',[])
-  .controller 'AnnouncementsOrderEditor', ($scope, $http, $window) ->
-    $scope.meetupId = $window.location.pathname.match(/\/meetups\/(\d+)\/announcement_order\/edit/)[1]
+  .controller 'AnnouncementsOrderEditor', ($scope, AnnouncementOrder, $window) ->
+
+    AnnouncementOrder.setMeetupId $window.location.pathname.match(/\/meetups\/(\d+)\/announcement_order\/edit/)[1]
 
     $scope.announcements = {
-      queued: [],
-      visible: [],
-      archived: []
+      queued: undefined,
+      visible: undefined,
+      archived: undefined
     }
 
-    $scope.announcements = $http.get("/meetups/#{$scope.meetupId}/announcement_order.json")
+    $scope.state = { dirty: false }
+    $scope.stateClass = ->
+      if $scope.state.dirty
+        'btn-primary'
+      else
+        'pristine'
+
+    setChanged = (newVal, oldVal) ->
+      unless oldVal is undefined
+        $scope.state.dirty = true
+
+    $scope.$watch 'announcements.queued', setChanged, true
+    $scope.$watch 'announcements.visible', setChanged, true
+    $scope.$watch 'announcements.archived', setChanged, true
+
+    $scope.announcements = AnnouncementOrder.load()
       .success (data) ->
         $scope.announcements = data
 
@@ -36,5 +52,6 @@ angular.module('AnnouncementsOrderEditor',[])
       $scope.announcements.visible = []
 
     $scope.save = ->
-      alert "TODO"
-
+      AnnouncementOrder.save($scope.announcements)
+        .success ->
+          $scope.state.dirty = false

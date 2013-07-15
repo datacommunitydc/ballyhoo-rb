@@ -1,2 +1,2 @@
 announcement = AnnouncementPresenter.new(announcement)
-json.(announcement, :photo, :display_name, :url, :message)
+json.(announcement, :id, :photo, :display_name, :url, :message)

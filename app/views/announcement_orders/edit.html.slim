@@ -27,18 +27,4 @@
               = f.check_box :allow_anon
               = f.label :allow_anon, "Anonymous View Enabled"
 
-        button.btn type="button" ng-click="save()" Save
-
-  .row.announcements-buttons
-    .span3.queued
-      .foot
-        = link_to "Make All Visible", "#"
-    .span3.visible
-      .foot
-        = link_to "Archive All", "#"
-    .span3.archived
-      .foot
-        = link_to "Delete All", "#"
-    .span3.options-save
-      .foot
-        = f.submit "Save"
+        button.save.btn class="{{stateClass()}}" type="button" ng-click="save()" Save

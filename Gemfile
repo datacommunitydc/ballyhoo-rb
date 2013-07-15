@@ -15,6 +15,8 @@ gem 'httparty'
 
 gem 'virtus'
 
+gem 'pry'
+
 gem 'sass-rails',   '~> 4.0.0.beta1'
 gem 'coffee-rails', '~> 4.0.0.beta1'
 
