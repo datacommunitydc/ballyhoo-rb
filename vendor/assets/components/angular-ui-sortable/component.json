@@ -1,0 +1,35 @@
+{
+  "name": "angular-ui-sortable",
+  "version": "0.0.1",
+  "description": "This directive allows you to jQueryUI Sortable.",
+  "author": {
+    "name": "https://github.com/angular-ui/ui-sortable/graphs/contributors"
+  },
+  "license": "MIT",
+  "homepage": "http://angular-ui.github.com",
+  "main": "./src/sortable.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "test*",
+    "demo*",
+    "gruntFile.js",
+    "package.json"
+  ],
+  "dependencies": {
+    "angular": "~1.x",
+    "jquery-ui": ">= 1.9"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.x"
+  },
+  "gitHead": "27d85e21cb96f49ed53cb48ed58841804e3fb4f9",
+  "readme": "# ui-sortable directive\n\nThis directive allows you to sort array with drag & drop.\n\n## Requirements\n\n- JQuery\n- JQueryUI\n\n## Usage\n\nLoad the script file: sortable.js in your application:\n\n```html\n<script type=\"text/javascript\" src=\"modules/directives/sortable/src/sortable.js\"></script>\n```\n\nAdd the sortable module as a dependency to your application module:\n\n```js\nvar myAppModule = angular.module('MyApp', ['ui.directives.sortable'])\n```\n\nApply the directive to your form elements:\n\n```html\n<ul ui-sortable ng-model=\"items\">\n  <li ng-repeat=\"item in items\">{{ item }}</li>\n</ul>\n```\n\n### Options\n\nAll the jQueryUI Sortable options can be passed through the directive.\n\n\n```js\nmyAppModule.controller('MyController', function($scope) {\n  $scope.items = [\"One\", \"Two\", \"Three\"];\n\n  $scope.sortableOptions = {\n    update: function(e, ui) { ... },\n    axis: 'x'\n  };\n});\n```\n\n```html\n<ul ui-sortable=\"sortableOptions\" ng-model=\"items\">\n  <li ng-repeat=\"item in items\">{{ item }}</li>\n</ul>\n```\n\n\n",
+  "readmeFilename": "README.md",
+  "_id": "angular-ui-sortable@0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/angular-ui/ui-sortable.git"
+  }
+}

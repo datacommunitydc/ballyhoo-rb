@@ -5,7 +5,7 @@ Ballyhoo::Application.routes.draw do
         post 'requeue'
       end
     end
-    resource :announcement_order, only: %i{edit update}
+    resource :announcement_order, only: %i{edit update show}
   end
 
   # want root to go to home#index, but redirect to /login aka sessions#index if not logged in
