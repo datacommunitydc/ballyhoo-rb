@@ -1,6 +1,8 @@
 .announcements-index ng-controller="AnnouncementsIndex"
-  ul.unstyled
-    li ng-repeat="ann in announcements"
-      announcement announcement="ann" layout="big"
+  container
+    row
+      grid.span12
+        div.annbox ng-repeat="ann in announcements"
+          announcement announcement="ann" layout="big"
 
   /= link_to "Add an announcement", new_meetup_announcement_path(meetup)
