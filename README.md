@@ -21,7 +21,7 @@ opportunities, then disappear before actual connections are made? Then Ballyhoo 
 
 Ballyhoo is a collaboration of the [DC Ruby Users Group](http://www.meetup.com/dcruby/) and [Data Community DC](http://datacommunitydc.org). Design and coding are led by Josh Szmajda (DCRUG) and Harlan Harris (DC2). 
 
-Ballyhoo is Open Source, and is released under an MIT License (see LICENSE.md).
+Ballyhoo is Open Source Software, and is released under an MIT License (see LICENSE).
 
 To use the public deployment of Ballyhoo, check out [http://ballyhoo.heroku.com].
 
