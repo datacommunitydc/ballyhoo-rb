@@ -1,3 +1,6 @@
+_NOTE_: This version of Ballyhoo, the original Ruby version, is not fully functional. See the
+[newer Node version](https://github.com/datacommunitydc/ballyhoo) instead.
+
 Ballyhoo
 ========
 
